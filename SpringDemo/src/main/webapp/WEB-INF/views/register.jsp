@@ -10,9 +10,6 @@
     #reg_form{
         padding-top: 50px;
     }
-    input{
-        margin: 7px;
-    }
 </style>
 <script>
     $(document).ready(function () {
@@ -23,15 +20,31 @@
            var checkForm = true;
            if (name === ''){
                $('#error').html('Name not null.');
-               return false;
+               checkForm = false;
            }
            if (email === ''){
                $('#error').html('Email not null.');
-               return false;
+               checkForm = false;
            }
            if (password === ''){
                $('#error').html('Password not null.');
-               return false;
+               checkForm = false;
+           }
+           if(checkForm){
+               $.ajax({
+                   url:'/account/registerProcess',
+                   data:{
+                       name: $('#name').val(),
+                       email: $('#email').val(),
+                       password: $('#password').val()
+                   },
+                   method:"POST",
+                   success:function (data) {
+                       if (data === 'ok'){
+                           alert('dang ki thanh cong');
+                       }
+                   }
+               })
            }
            return true;
        });
@@ -83,4 +96,5 @@
 
     </div>
 </div>
+
 <%@include file="footer.jsp"%>

@@ -19,7 +19,9 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
 
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -35,10 +37,10 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <div id="top" class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><i class="fas fa-plus-square"></i> Write your post</a></li>
-            <li><a href="#"><i class="fas fa-clipboard-list"></i> All post</a></li>
+            <li <c:if test="${activeSetting=='home'}" >class="active"</c:if>><a  href="/"><i class="fas fa-clipboard-list"></i> All post</a></li>
+            <li><a href="#"><i class="fas fa-plus-square"></i> Write your post</a></li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -59,13 +61,13 @@
                     </ul>
                 </li>
             </c:if>
-            <li class="dropdown">
+            <li <c:if test="${active == 'a'}" >class="active"</c:if> class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="far fa-user"></i> Account <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/account/registerPage"><i class="fas fa-user-plus"></i> Sign up</a></li>
-                    <li><a href="/account/loginPage"><i class="fas fa-sign-in-alt"></i> Sign in</a></li>
-                    <li><a href="/account/forgotpasswordPage"><i class="fas fa-unlock"></i> Forgot Password</a></li>
-                    <li><a href="/account/changepasswordPage"><i class="fas fa-unlock"></i> Change Password</a></li>
+                    <li <c:if test="${activeSetting=='acc2'}" >class="active"</c:if>><a href="/account/registerPage"><i class="fas fa-user-plus"></i> Sign up</a></li>
+                    <li <c:if test="${activeSetting=='acc1'}" >class="active"</c:if>><a href="/account/loginPage"><i class="fas fa-sign-in-alt"></i> Sign in</a></li>
+                    <li <c:if test="${activeSetting=='acc4'}" >class="active"</c:if>><a href="/account/forgotpasswordPage"><i class="fas fa-unlock"></i> Forgot Password</a></li>
+                    <li <c:if test="${activeSetting=='acc3'}" >class="active"</c:if>><a href="/account/changepasswordPage"><i class="fas fa-unlock"></i> Change Password</a></li>
                 </ul>
             </li>
         </ul>

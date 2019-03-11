@@ -11,9 +11,6 @@
         padding-top: 50px;
     }
 
-    input {
-        margin: 7px;
-    }
 </style>
 <script>
     $(document).ready(function () {

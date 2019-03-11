@@ -11,58 +11,58 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-//@Configuration
-//@EnableTransactionManagement
+@Configuration
+@EnableTransactionManagement
 public class HibernateConfiguration {
-//	@Value("com.mysql.jdbc.Driver")
-//	private String DRIVER;
-//
-//	@Value("Abcdabcd1")
-//	private String PASSWORD;
-//
-//	@Value("jdbc:mysql://localhost:3306/qlsv")
-//	private String URL;
-//
-//	@Value("root")
-//	private String USERNAME;
-//
-//	@Value("org.hibernate.dialect.MySQLDialect")
-//	private String DIALECT;
-//
-//	@Value("true")
-//	private String SHOW_SQL;
-//
-//
-//	@Value("com")
-//	private String PACKAGES_TO_SCAN;
-//
-//	@Bean
-//	public DataSource dataSource() {
-//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//		dataSource.setDriverClassName(DRIVER);
-//		dataSource.setUrl(URL);
-//		dataSource.setUsername(USERNAME);
-//		dataSource.setPassword(PASSWORD);
-//		return dataSource;
-//	}
-//
-//	@Bean
-//	public LocalSessionFactoryBean sessionFactory() {
-//		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-//		sessionFactory.setDataSource(dataSource());
-//		sessionFactory.setPackagesToScan(PACKAGES_TO_SCAN);
-//		Properties hibernateProperties = new Properties();
-//		hibernateProperties.put("hibernate.dialect", DIALECT);
-//		hibernateProperties.put("hibernate.show_sql", SHOW_SQL);
-//		sessionFactory.setHibernateProperties(hibernateProperties);
-//
-//		return sessionFactory;
-//	}
-//
-//	@Bean
-//	public HibernateTransactionManager transactionManager() {
-//		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-//		transactionManager.setSessionFactory(sessionFactory().getObject());
-//		return transactionManager;
-//	}
+	@Value("com.mysql.jdbc.Driver")
+	private String DRIVER;
+
+	@Value("root")
+	private String PASSWORD;
+
+	@Value("jdbc:mysql:localhost:3306/myblog")
+	private String URL;
+
+	@Value("root")
+	private String USERNAME;
+
+	@Value("org.hibernate.dialect.MySQLDialect")
+	private String DIALECT;
+
+	@Value("true")
+	private String SHOW_SQL;
+
+
+	@Value("com")
+	private String PACKAGES_TO_SCAN;
+
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName(DRIVER);
+		dataSource.setUrl(URL);
+		dataSource.setUsername(USERNAME);
+		dataSource.setPassword(PASSWORD);
+		return dataSource;
+	}
+
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+		sessionFactory.setDataSource(dataSource());
+		sessionFactory.setPackagesToScan(PACKAGES_TO_SCAN);
+		Properties hibernateProperties = new Properties();
+		hibernateProperties.put("hibernate.dialect", DIALECT);
+		hibernateProperties.put("hibernate.show_sql", SHOW_SQL);
+		sessionFactory.setHibernateProperties(hibernateProperties);
+
+		return sessionFactory;
+	}
+
+	@Bean
+	public HibernateTransactionManager transactionManager() {
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+		transactionManager.setSessionFactory(sessionFactory().getObject());
+		return transactionManager;
+	}
 }
